@@ -170,7 +170,7 @@ function gameLoop(){
     now = Date.now();
     if(!last || now - last >= 1000 && !playerActed && turn != 2) {
       last = now;
-      timeLeft--;
+      // timeLeft--;
       if (timeLeft <= 0) {
         turn = 2;
         playerActed = true;
@@ -203,7 +203,7 @@ function loseGame() {
 
   setTimeout(() => {
     document.getElementById("outro").style.display = "block";
-    document.getElementById("outro-bg").style.backgroundImage = "url('/static/img/defeat.png')";
+    document.getElementById("outro-pic").style.backgroundImage = "url('/static/img/defeat.png')";
     document.getElementById("outro-btn").className = "btn btn-danger";
     document.getElementById("outro").className += " fade-in-image";
   }, 2000);

@@ -14,7 +14,7 @@ var hitBonus = 0;
 var hitMultiplier = 1;
 var healthEffect = 0;
 var defenseBonus = 0;
-var DefenseMultiplier = 1;
+var defenseMultiplier = 1;
 
 var playerHealth = 100;
 var playerHealthMax = playerHealth;
@@ -198,7 +198,7 @@ function winGame() {
 
 function loseGame() {
   pause = true;
-  newLog("enemy", "DIDI BIRD has fainted! You lost!");
+  newLog("enemy", "DIDI has fainted! You lost!");
   document.getElementById("animal-sprite-friendly").className += " hidden-animation";
 
   setTimeout(() => {
@@ -386,7 +386,7 @@ function activateAI() {
                 if (damage < 0) damage = 0;
 
                 if (playerHealth > 0) {
-                  newLog("enemy", String(animal) + " dealt " + String(damage) + " HP of damage to DIDI BIRD.");
+                  newLog("enemy", String(animal) + " dealt " + String(damage) + " HP of damage to DIDI.");
                 }
 
                 document.getElementById("damage-indicator").innerHTML = "-" + String(damage) + " HP";
@@ -531,7 +531,7 @@ function useAbility(num) {
   useMenuOption(document.getElementById("action-return"));
   hideAbilityDescription();
 
-  newLog("friendly", "DIDI BIRD has used <u style='cursor: pointer;' title='" + String(currAbility.description) + "'><b>" + String(currAbility.name) + "</b></u>!");
+  newLog("friendly", "DIDI has used <u style='cursor: pointer;' title='" + String(currAbility.description) + "'><b>" + String(currAbility.name) + "</b></u>!");
 
   // Run animation
   if (currAbility.type == "heal") {
@@ -551,7 +551,7 @@ function useAbility(num) {
       if (Math.random() * 100 + 1 <= critChance) {
         critDamage = currAbility.damage * Math.max(critMultiplier - 1, 0) + critBonus;
         critHit = true;
-        newLog("friendly", "DIDI BIRD rolled CRITICAL DAMAGE!");
+        newLog("friendly", "DIDI rolled CRITICAL DAMAGE!");
 
         document.getElementById("crit-indicator").style.top = "43vh";
         document.getElementById("crit-indicator").style.right = "57vw";
@@ -577,14 +577,14 @@ function useAbility(num) {
             if (hit) {
               var damage = Math.ceil((currAbility.damage) + critDamage);
 
-              newLog("friendly", "DIDI BIRD recovered " + String(damage) + " HP.");
+              newLog("friendly", "DIDI recovered " + String(damage) + " HP.");
     
               document.getElementById("damage-indicator").innerHTML = "+" + String(damage) + " HP";
               playerHealth = Math.min(playerHealthMax, playerHealth + damage);
               // document.getElementById("animal-sprite-enemy").style.animation = "hurt " + String(currAbility.duration / 1000) + "s";
             } else {
               document.getElementById("damage-indicator").innerHTML = "MISSED!";
-              newLog("friendly", "DIDI BIRD has MISSED!");
+              newLog("friendly", "DIDI has MISSED!");
               // document.getElementById("animal-sprite-enemy").style.animation = "blink " + String(currAbility.duration / 1000) + "s";
             }
     
@@ -624,7 +624,7 @@ function useAbility(num) {
       if (Math.random() * 100 + 1 <= critChance) {
         critDamage = currAbility.damage * Math.max(critMultiplier - 1, 0) * enemyDefenseMultiplier + critBonus;
         critHit = true;
-        newLog("friendly", "DIDI BIRD rolled CRITICAL DAMAGE!");
+        newLog("friendly", "DIDI rolled CRITICAL DAMAGE!");
 
         document.getElementById("crit-indicator").style.top = "19vh";
         document.getElementById("crit-indicator").style.right = "16vw";
@@ -652,7 +652,7 @@ function useAbility(num) {
               if (damage < 0) damage = 0;
 
               if (enemyHealth > 0) {
-                newLog("friendly", "DIDI BIRD dealt " + String(damage) + " HP of damage to " + String(animal) + ".");
+                newLog("friendly", "DIDI dealt " + String(damage) + " HP of damage to " + String(animal) + ".");
               }
 
               document.getElementById("damage-indicator").innerHTML = "-" + String(damage) + " HP";
@@ -660,7 +660,7 @@ function useAbility(num) {
               // document.getElementById("animal-sprite-enemy").style.animation = "hurt " + String(currAbility.duration / 1000) + "s";
             } else {
               document.getElementById("damage-indicator").innerHTML = "MISSED!";
-              newLog("friendly", "DIDI BIRD has MISSED!");
+              newLog("friendly", "DIDI has MISSED!");
               // document.getElementById("animal-sprite-enemy").style.animation = "blink " + String(currAbility.duration / 1000) + "s";
             }
     

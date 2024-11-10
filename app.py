@@ -13,7 +13,7 @@ import numpy as np
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-os.environ["OPENAI_API_KEY"] = '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'
+os.environ["OPENAI_API_KEY"] = 'OPENAI_API_KEY_HERE'
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 sampleAbility1 = '''{
